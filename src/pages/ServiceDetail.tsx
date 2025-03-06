@@ -1,318 +1,242 @@
 
-import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import PageHeader from "@/components/shared/PageHeader";
-import SectionHeading from "@/components/shared/SectionHeading";
-import { toast } from "@/components/ui/sonner";
-import ImageWithFallback from "@/components/shared/ImageWithFallback";
+import { toast } from "sonner";
 
-interface ServiceStep {
-  title: string;
-  description: string;
-}
-
-interface ServicePlan {
-  name: string;
-  price: string;
-  description: string;
-  features: string[];
-  isPopular?: boolean;
-}
-
-interface ServiceData {
-  id: string;
-  title: string;
-  fullTitle: string;
-  description: string;
-  longDescription: string;
-  image: string;
-  steps: ServiceStep[];
-  plans: ServicePlan[];
-}
-
-const servicesData: ServiceData[] = [
+const servicesData = [
   {
     id: "residential",
-    title: "Residential",
-    fullTitle: "Residential Pest Control",
-    description: "Comprehensive pest control solutions for your home.",
-    longDescription: "Our residential pest control services provide complete protection for your home against common household pests. We use safe, effective methods to eliminate current infestations and prevent future problems.",
-    image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
-    steps: [
-      {
-        title: "Thorough Inspection",
-        description: "Our certified technicians conduct a comprehensive inspection of your property to identify pest issues and potential entry points."
-      },
-      {
-        title: "Customized Treatment Plan",
-        description: "Based on the inspection findings, we develop a tailored treatment plan specific to your home's needs and the types of pests present."
-      },
-      {
-        title: "Initial Treatment",
-        description: "We implement the initial treatment using eco-friendly products that are effective against pests while being safe for your family and pets."
-      },
-      {
-        title: "Follow-Up & Prevention",
-        description: "Regular follow-up visits ensure lasting results, and we implement preventative measures to protect against future infestations."
-      }
+    title: "Residential Pest Control",
+    description: "Protect your home from unwanted pests with our comprehensive residential pest control services.",
+    fullDescription: "Our residential pest control services are designed to protect your home and family from harmful and annoying pests. We use safe, environmentally friendly products and methods to eliminate pests and prevent future infestations. Our technicians are professionally trained and certified to handle all types of pest problems, from common household pests to more specialized infestations.",
+    features: [
+      "Comprehensive home inspection",
+      "Targeted treatment plans",
+      "Preventative measures",
+      "Follow-up visits",
+      "Satisfaction guarantee"
     ],
-    plans: [
-      {
-        name: "One-Time Service",
-        price: "$149",
-        description: "A single comprehensive treatment for current pest issues.",
+    image: "https://images.unsplash.com/photo-1513880989635-6eb491ce7f5b",
+    pricing: {
+      basic: {
+        name: "Basic Protection",
+        price: "$99",
+        description: "One-time treatment for current pest issues",
         features: [
           "Thorough inspection",
           "Targeted treatment",
-          "30-day guarantee",
-          "Prevention recommendations"
+          "60-day guarantee"
         ]
       },
-      {
-        name: "Quarterly Protection",
-        price: "$89/quarter",
-        description: "Seasonal treatments to maintain a pest-free home year-round.",
+      standard: {
+        name: "Standard Protection",
+        price: "$249",
+        description: "Quarterly treatments for year-round protection",
         features: [
-          "Initial comprehensive treatment",
-          "Quarterly preventative services",
+          "Initial comprehensive inspection",
+          "Quarterly preventative treatments",
           "Free re-treatments if pests return",
-          "Indoor and outdoor protection",
-          "Annual termite inspection"
-        ],
-        isPopular: true
+          "Interior and exterior protection"
+        ]
       },
-      {
-        name: "Monthly Guardian",
-        price: "$49/month",
-        description: "Maximum protection with monthly service visits.",
+      premium: {
+        name: "Premium Protection",
+        price: "$349",
+        description: "Bi-monthly treatments with expanded coverage",
         features: [
-          "Initial comprehensive treatment",
-          "Monthly preventative services",
-          "Priority scheduling",
-          "Unlimited re-treatments",
-          "Rodent monitoring",
+          "All Standard Protection features",
+          "Bi-monthly (every 2 months) treatments",
+          "Extended coverage for additional pests",
+          "Rodent control included",
           "Annual termite inspection"
         ]
       }
-    ]
+    }
   },
   {
     id: "commercial",
-    title: "Commercial",
-    fullTitle: "Commercial Pest Management",
-    description: "Professional pest management solutions for businesses.",
-    longDescription: "Our commercial pest management services help businesses maintain a pest-free environment that protects your reputation, complies with regulations, and provides a healthy space for employees and customers.",
-    image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511",
-    steps: [
-      {
-        title: "Site Evaluation",
-        description: "We perform a thorough assessment of your facility to identify current and potential pest issues specific to your industry."
-      },
-      {
-        title: "Custom Program Development",
-        description: "Our team develops a comprehensive pest management program tailored to your business needs, operational requirements, and industry regulations."
-      },
-      {
-        title: "Integrated Implementation",
-        description: "We implement treatments and preventative measures with minimal disruption to your business operations."
-      },
-      {
-        title: "Ongoing Monitoring & Documentation",
-        description: "Regular service visits maintain protection, with detailed documentation for audit and compliance purposes."
-      }
+    title: "Commercial Pest Management",
+    description: "Tailored pest control solutions for businesses of all sizes to maintain a pest-free environment.",
+    fullDescription: "Our commercial pest management services are designed to protect your business, employees, and customers from pests. We understand that pest problems can damage your reputation and disrupt your operations. That's why we offer discreet, effective pest control solutions tailored to your specific industry requirements, from restaurants and hotels to offices, retail spaces, and warehouses.",
+    features: [
+      "Customized pest management programs",
+      "Compliance with health regulations",
+      "Discreet service scheduling",
+      "Employee training resources",
+      "Detailed documentation and reporting"
     ],
-    plans: [
-      {
-        name: "Basic Commercial",
-        price: "$249/month",
-        description: "Essential protection for small businesses.",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7",
+    pricing: {
+      basic: {
+        name: "Small Business",
+        price: "$149/month",
+        description: "For businesses up to 2,500 sq ft",
         features: [
           "Monthly service visits",
-          "Basic documentation",
-          "Treatment of common pests",
-          "Email support"
+          "Interior and exterior treatments",
+          "Common pest coverage",
+          "Email documentation"
         ]
       },
-      {
-        name: "Standard Commercial",
-        price: "$499/month",
-        description: "Comprehensive protection for medium-sized facilities.",
+      standard: {
+        name: "Medium Business",
+        price: "$299/month",
+        description: "For businesses 2,500-10,000 sq ft",
         features: [
           "Bi-weekly service visits",
-          "Comprehensive documentation",
-          "HACCP compliance support",
-          "24/7 emergency response",
-          "Dedicated account manager"
-        ],
-        isPopular: true
+          "Comprehensive pest coverage",
+          "HACCP/AIB compliance support",
+          "Employee training session",
+          "Detailed reporting"
+        ]
       },
-      {
-        name: "Premium Commercial",
-        price: "Custom pricing",
-        description: "Advanced protection for large facilities with complex needs.",
+      premium: {
+        name: "Large Business",
+        price: "Custom Quote",
+        description: "For businesses over 10,000 sq ft",
         features: [
           "Customized service schedule",
-          "Advanced monitoring systems",
-          "Digital reporting platform",
+          "Complete pest management system",
+          "Dedicated account manager",
+          "24/7 emergency response",
           "Regulatory compliance support",
-          "Staff training",
-          "Annual facility assessment"
+          "Staff training program"
         ]
       }
-    ]
+    }
   },
   {
     id: "termite-control",
     title: "Termite Control",
-    fullTitle: "Termite Control & Prevention",
-    description: "Specialized solutions to eliminate and prevent termite infestations.",
-    longDescription: "Our termite control services protect your property from these destructive pests using the latest detection technology and treatment methods, backed by solid warranties.",
-    image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace",
-    steps: [
-      {
-        title: "Termite Inspection",
-        description: "Our specialists conduct a thorough inspection using advanced technology to detect termite activity, even in hidden areas."
-      },
-      {
-        title: "Treatment Strategy",
-        description: "Based on the inspection findings, we develop a customized treatment plan targeting the specific termite species and extent of infestation."
-      },
-      {
-        title: "Treatment Application",
-        description: "We implement the most effective treatment method, which may include liquid treatments, bait systems, or a combination approach."
-      },
-      {
-        title: "Ongoing Protection",
-        description: "We establish a protective barrier and monitoring system to prevent future termite infestations, backed by our guarantee."
-      }
+    description: "Specialized treatments to eliminate termites and prevent future infestations, protecting your property.",
+    fullDescription: "Our termite control services provide comprehensive protection against these destructive pests. Termites cause billions of dollars in property damage each year, and most homeowner's insurance policies don't cover termite damage. Our trained technicians use the latest technologies and methods to detect, eliminate, and prevent termite infestations, safeguarding your largest investment.",
+    features: [
+      "Thorough termite inspection",
+      "Advanced detection technology",
+      "Targeted elimination treatments",
+      "Preventative barrier installation",
+      "Ongoing monitoring systems"
     ],
-    plans: [
-      {
-        name: "Termite Inspection",
-        price: "$149",
-        description: "Comprehensive inspection and report of termite activity.",
+    image: "https://images.unsplash.com/photo-1626181615138-99041e9aeb57",
+    pricing: {
+      basic: {
+        name: "Spot Treatment",
+        price: "$499",
+        description: "Targeted treatment for localized infestations",
         features: [
-          "Visual inspection",
-          "Moisture readings",
-          "Detailed report",
-          "Treatment recommendations"
+          "Inspection and identification",
+          "Focused treatment of affected areas",
+          "1-year warranty"
         ]
       },
-      {
-        name: "Termite Treatment",
-        price: "From $999",
-        description: "Complete termite elimination and initial protection.",
+      standard: {
+        name: "Whole Home Protection",
+        price: "$1,299",
+        description: "Complete termite elimination and prevention",
         features: [
-          "Full property treatment",
-          "Elimination of active colonies",
-          "1-year warranty",
-          "Follow-up inspection"
-        ],
-        isPopular: true
+          "Comprehensive home inspection",
+          "Full perimeter treatment",
+          "Termite baiting system installation",
+          "5-year renewable warranty"
+        ]
       },
-      {
-        name: "Termite Shield",
-        price: "$299/year",
-        description: "Ongoing protection and warranty coverage.",
+      premium: {
+        name: "Ultimate Shield",
+        price: "$1,899",
+        description: "Our most comprehensive termite defense system",
         features: [
-          "Annual inspections",
-          "Preventative maintenance",
-          "Renewable warranty",
-          "Priority response for new activity",
-          "Transferable coverage"
+          "All Whole Home Protection features",
+          "Annual inspections included",
+          "Damage repair guarantee up to $1 million",
+          "Transferable warranty",
+          "Green/eco-friendly options available"
         ]
       }
-    ]
+    }
   },
   {
     id: "wildlife-removal",
     title: "Wildlife Removal",
-    fullTitle: "Wildlife Removal & Exclusion",
-    description: "Humane wildlife removal and prevention services.",
-    longDescription: "Our wildlife removal services safely and humanely remove unwanted animals from your property while implementing effective exclusion methods to prevent their return.",
-    image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
-    steps: [
-      {
-        title: "Wildlife Assessment",
-        description: "We identify the species involved, locate entry points, and assess any damage to determine the most effective removal approach."
-      },
-      {
-        title: "Humane Removal",
-        description: "Using humane trapping and removal techniques, we safely remove the animals from your property in compliance with wildlife regulations."
-      },
-      {
-        title: "Exclusion & Repair",
-        description: "We seal entry points and implement preventative measures to ensure wildlife cannot re-enter your property."
-      },
-      {
-        title: "Sanitization & Restoration",
-        description: "We clean and sanitize affected areas to eliminate odors and health hazards, and can assist with damage repair."
-      }
+    description: "Humane wildlife removal and exclusion services to keep unwanted animals away from your property.",
+    fullDescription: "Our wildlife removal services offer humane, effective solutions for dealing with unwanted animals on your property. We specialize in the removal and exclusion of raccoons, squirrels, bats, birds, opossums, skunks, and other wildlife that can cause damage to your home or business. Our trained wildlife specialists use humane trapping and removal techniques, followed by exclusion methods to prevent future problems.",
+    features: [
+      "Humane trapping and removal",
+      "Animal entry point identification",
+      "Exclusion services to prevent re-entry",
+      "Property damage repair consultation",
+      "Preventative recommendations"
     ],
-    plans: [
-      {
-        name: "Basic Wildlife Removal",
-        price: "$399",
-        description: "Essential removal service for common wildlife issues.",
+    image: "https://images.unsplash.com/photo-1503656142023-618e7d1f435a",
+    pricing: {
+      basic: {
+        name: "Inspection & Assessment",
+        price: "$149",
+        description: "Professional evaluation of wildlife issues",
         features: [
-          "Species identification",
-          "Humane trapping and removal",
-          "Basic entry point sealing",
-          "Removal of up to 3 animals"
+          "Thorough property inspection",
+          "Wildlife identification",
+          "Written assessment report",
+          "Removal plan recommendation"
         ]
       },
-      {
-        name: "Complete Wildlife Solution",
-        price: "$799",
-        description: "Comprehensive removal and exclusion service.",
+      standard: {
+        name: "Trapping & Removal",
+        price: "$349+",
+        description: "Safe removal of nuisance wildlife",
         features: [
-          "Full property inspection",
-          "Unlimited trapping and removal",
-          "Complete exclusion work",
-          "Basic damage repair",
-          "Attic sanitization"
-        ],
-        isPopular: true
+          "Initial inspection",
+          "Humane trap setting",
+          "Multiple visits for animal removal",
+          "Basic entry point sealing",
+          "30-day warranty"
+        ]
       },
-      {
-        name: "Wildlife Prevention",
-        price: "$249/year",
-        description: "Ongoing inspections and maintenance to prevent wildlife issues.",
+      premium: {
+        name: "Complete Wildlife Management",
+        price: "$899+",
+        description: "Comprehensive solution for wildlife problems",
         features: [
-          "Bi-annual inspections",
-          "Preventative maintenance",
-          "Discounted emergency services",
-          "Wildlife deterrent application",
-          "Roof and foundation assessment"
+          "All Trapping & Removal services",
+          "Complete exclusion work",
+          "Attic restoration and sanitizing",
+          "Damage repair consultation",
+          "1-year warranty",
+          "Follow-up inspection"
         ]
       }
-    ]
+    }
   }
 ];
 
 const ServiceDetail = () => {
   const { serviceId } = useParams<{ serviceId: string }>();
-  const [service, setService] = useState<ServiceData | null>(null);
-  const navigate = useNavigate();
-
+  const service = servicesData.find((s) => s.id === serviceId);
+  
+  // Scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
-    
-    const foundService = servicesData.find(s => s.id === serviceId);
-    
-    if (foundService) {
-      setService(foundService);
-    } else {
-      toast.error("Service not found");
-      navigate("/services", { replace: true });
-    }
-  }, [serviceId, navigate]);
+  }, []);
+
+  const handleRequestService = () => {
+    toast.success("Service request received!", {
+      description: "We'll contact you shortly to discuss your needs.",
+    });
+  };
 
   if (!service) {
-    return null;
+    return (
+      <div className="container mx-auto px-6 py-16 text-center">
+        <h2 className="text-2xl font-semibold mb-4">Service Not Found</h2>
+        <p className="mb-8">The service you're looking for doesn't exist or has been removed.</p>
+        <Button asChild>
+          <Link to="/services">View All Services</Link>
+        </Button>
+      </div>
+    );
   }
 
   return (
@@ -321,144 +245,122 @@ const ServiceDetail = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="overflow-hidden"
     >
-      <PageHeader 
-        title={service.fullTitle} 
+      <PageHeader
+        title={service.title}
         subtitle={service.description}
         backgroundImage={service.image}
       />
-      
-      <section className="py-16">
+
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
-          <div className="mb-8">
-            <Button variant="ghost" asChild className="mb-6">
-              <Link to="/services" className="flex items-center text-gray-600 hover:text-primary">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Services
-              </Link>
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-            <div className="lg:col-span-3">
-              <SectionHeading
-                title="Service Overview"
-                alignment="left"
-                className="mb-6"
-              />
-              
-              <div className="prose prose-lg max-w-none">
-                <p className="text-gray-700">{service.longDescription}</p>
-              </div>
-              
-              <div className="mt-12">
-                <h3 className="text-2xl font-semibold mb-6">Our Process</h3>
+          <Button asChild variant="outline" className="mb-8 group">
+            <Link to="/services" className="flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
+              Back to Services
+            </Link>
+          </Button>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="lg:col-span-2">
+              <h2 className="text-3xl font-semibold mb-6">Service Overview</h2>
+              <p className="text-gray-700 mb-8">{service.fullDescription}</p>
+
+              <h3 className="text-xl font-semibold mb-4">Key Features</h3>
+              <ul className="space-y-2 mb-12">
+                {service.features.map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                    <CheckCircle className="h-5 w-5 text-primary mr-2 shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <h3 className="text-xl font-semibold mb-6">Our Process</h3>
+              <div className="space-y-6 mb-12">
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-2">1. Inspection & Assessment</h4>
+                  <p className="text-gray-700">Our technicians will thoroughly inspect your property to identify pest issues, entry points, and contributing factors.</p>
+                </div>
                 
-                <div className="space-y-8">
-                  {service.steps.map((step, index) => (
-                    <motion.div 
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      className="flex"
-                    >
-                      <div className="mr-6">
-                        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white font-bold">
-                          {index + 1}
-                        </div>
-                        {index < service.steps.length - 1 && (
-                          <div className="w-0.5 h-full bg-gray-200 mx-auto mt-2"></div>
-                        )}
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-medium mb-2">{step.title}</h4>
-                        <p className="text-gray-600">{step.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-2">2. Customized Treatment Plan</h4>
+                  <p className="text-gray-700">Based on our findings, we'll develop a tailored treatment plan specific to your property and pest issues.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-2">3. Implementation</h4>
+                  <p className="text-gray-700">Our trained professionals will implement the treatment plan using the most effective and environmentally responsible methods.</p>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg">
+                  <h4 className="font-semibold text-lg mb-2">4. Follow-up & Prevention</h4>
+                  <p className="text-gray-700">We'll conduct follow-up visits as needed and provide recommendations to prevent future pest problems.</p>
                 </div>
               </div>
-              
-              <div className="mt-12">
-                <ImageWithFallback
-                  src={service.image}
-                  alt={service.title}
-                  className="rounded-lg overflow-hidden shadow-lg w-full h-80 md:h-96"
-                />
-              </div>
             </div>
-            
-            <div className="lg:col-span-2">
-              <SectionHeading
-                title="Service Plans"
-                alignment="left"
-                className="mb-6"
-              />
-              
+
+            <div>
+              <h3 className="text-2xl font-semibold mb-6">Pricing</h3>
               <div className="space-y-6">
-                {service.plans.map((plan, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <div className={`rounded-lg border p-6 ${plan.isPopular ? 'bg-primary bg-opacity-5 border-primary' : 'bg-white border-gray-200'} relative`}>
-                      {plan.isPopular && (
-                        <div className="absolute -top-3 right-6 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                          Most Popular
-                        </div>
-                      )}
-                      
-                      <h4 className="text-xl font-semibold mb-1">{plan.name}</h4>
-                      <div className="flex items-baseline mb-4">
-                        <span className="text-3xl font-bold">{plan.price}</span>
-                        {plan.price.includes('/') && (
-                          <span className="text-gray-500 ml-1">
-                            {plan.price.includes('month') ? 'per month' : plan.price.includes('quarter') ? 'per quarter' : 'per year'}
-                          </span>
-                        )}
-                      </div>
-                      
-                      <p className="text-gray-600 mb-5">{plan.description}</p>
-                      
-                      <ul className="space-y-2 mb-6">
-                        {plan.features.map((feature, i) => (
-                          <li key={i} className="flex items-start">
-                            <div className="mr-2 mt-1 bg-primary rounded-full p-1">
-                              <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                            </div>
-                            <span className="text-gray-700">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <Button asChild className="w-full">
-                        <Link to="/quote">Request This Plan</Link>
-                      </Button>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              <div className="mt-10 p-6 bg-gray-50 rounded-lg border border-gray-200">
-                <h4 className="text-lg font-medium mb-4">Need More Information?</h4>
-                <p className="text-gray-600 mb-4">
-                  Our pest control experts are ready to answer your questions and provide a personalized quote.
-                </p>
-                <div className="flex space-x-3">
-                  <Button asChild variant="outline">
-                    <Link to="/contact">Contact Us</Link>
-                  </Button>
-                  <Button asChild>
-                    <Link to="/quote">Get a Quote</Link>
-                  </Button>
+                <div className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="bg-gray-50 p-6">
+                    <h4 className="text-xl font-medium">{service.pricing.basic.name}</h4>
+                    <div className="text-3xl font-bold text-primary mt-2">{service.pricing.basic.price}</div>
+                    <p className="text-gray-600 mt-1">{service.pricing.basic.description}</p>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-2">
+                      {service.pricing.basic.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full mt-6" onClick={handleRequestService}>Request Service</Button>
+                  </div>
+                </div>
+
+                <div className="border border-primary rounded-lg overflow-hidden shadow-md relative">
+                  <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    POPULAR
+                  </div>
+                  <div className="bg-gray-50 p-6">
+                    <h4 className="text-xl font-medium">{service.pricing.standard.name}</h4>
+                    <div className="text-3xl font-bold text-primary mt-2">{service.pricing.standard.price}</div>
+                    <p className="text-gray-600 mt-1">{service.pricing.standard.description}</p>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-2">
+                      {service.pricing.standard.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full mt-6" onClick={handleRequestService}>Request Service</Button>
+                  </div>
+                </div>
+
+                <div className="border border-gray-200 rounded-lg overflow-hidden">
+                  <div className="bg-gray-50 p-6">
+                    <h4 className="text-xl font-medium">{service.pricing.premium.name}</h4>
+                    <div className="text-3xl font-bold text-primary mt-2">{service.pricing.premium.price}</div>
+                    <p className="text-gray-600 mt-1">{service.pricing.premium.description}</p>
+                  </div>
+                  <div className="p-6">
+                    <ul className="space-y-2">
+                      {service.pricing.premium.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-4 w-4 text-primary mr-2 shrink-0 mt-0.5" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <Button className="w-full mt-6" onClick={handleRequestService}>Request Service</Button>
+                  </div>
                 </div>
               </div>
             </div>

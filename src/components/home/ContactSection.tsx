@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import SectionHeading from "@/components/shared/SectionHeading";
 
 const ContactSection = () => {
@@ -35,10 +35,6 @@ const ContactSection = () => {
       setIsSuccess(true);
       toast.success("Message sent successfully!", {
         description: "We'll get back to you shortly.",
-        action: {
-          label: "Close",
-          onClick: () => {},
-        },
       });
       
       // Reset form after 2 seconds

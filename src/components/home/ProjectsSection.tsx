@@ -67,10 +67,9 @@ const ProjectsSection = () => {
                   <ImageWithFallback
                     src={project.image}
                     alt={project.title}
-                    className="h-48 w-full object-cover transition-transform duration-500"
-                    style={{
-                      transform: hoveredId === project.id ? "scale(1.05)" : "scale(1)",
-                    }}
+                    className={`h-48 w-full object-cover transition-transform duration-500 ${
+                      hoveredId === project.id ? "scale-105" : "scale-100"
+                    }`}
                   />
                   <div className="absolute top-4 right-4">
                     <span className="px-3 py-1 bg-primary bg-opacity-90 text-white text-xs font-medium rounded-full">
