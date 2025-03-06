@@ -33,10 +33,10 @@ const Footer = () => {
             variants={footerAnimation}
           >
             <Link to="/" className="inline-block">
-              <h3 className="text-2xl font-bold text-white">PestPro</h3>
+              <h3 className="text-2xl font-bold text-white">PestPro Auckland</h3>
             </Link>
             <p className="text-gray-400 max-w-xs">
-              Professional pest control services providing safe and effective solutions for residential and commercial properties.
+              Professional pest control services providing safe and effective solutions for residential and commercial properties throughout Auckland, New Zealand.
             </p>
             <div className="flex space-x-4 pt-2">
               <Button size="icon" variant="ghost" className="rounded-full h-8 w-8 p-0 hover:text-primary hover:bg-gray-800">
@@ -111,15 +111,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-gray-400">123 Pest Control Ave, New York, NY 10001</span>
+                <span className="text-gray-400">123 Pest Control Drive, Auckland CBD, Auckland 1010, New Zealand</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-gray-400">(555) 123-4567</span>
+                <span className="text-gray-400">(09) 123-4567</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary shrink-0" />
-                <span className="text-gray-400">info@pestpro.com</span>
+                <span className="text-gray-400">info@pestproauckland.co.nz</span>
               </li>
             </ul>
           </motion.div>
@@ -133,7 +133,7 @@ const Footer = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p>© {currentYear} PestPro. All rights reserved.</p>
+          <p>© {currentYear} PestPro Auckland. All rights reserved. Serving all areas of Auckland, New Zealand.</p>
         </motion.div>
       </div>
     </footer>

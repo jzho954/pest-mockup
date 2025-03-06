@@ -66,8 +66,8 @@ const Contact = () => {
       transition={{ duration: 0.5 }}
     >
       <PageHeader
-        title="Contact Us"
-        subtitle="Get in touch with our pest control experts"
+        title="Contact Your Auckland Pest Control Experts"
+        subtitle="Get in touch with our local pest control specialists"
         backgroundImage="https://images.unsplash.com/photo-1423666639041-f56000c27a9a"
       />
 
@@ -75,7 +75,7 @@ const Contact = () => {
         <div className="container mx-auto px-6">
           <SectionHeading
             title="Get in Touch"
-            subtitle="We're here to help with all your pest control needs"
+            subtitle="We're here to help with all your pest control needs across Auckland"
           />
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
@@ -90,7 +90,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Phone</h4>
-                    <p className="text-gray-600">(555) 123-4567</p>
+                    <p className="text-gray-600">(09) 123-4567</p>
                     <p className="text-gray-500 text-sm">Mon-Fri, 8:00 AM - 6:00 PM</p>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-medium">Email</h4>
-                    <p className="text-gray-600">info@pestpro.com</p>
+                    <p className="text-gray-600">info@pestproauckland.co.nz</p>
                     <p className="text-gray-500 text-sm">We respond within 24 hours</p>
                   </div>
                 </div>
@@ -113,9 +113,11 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium">Office Address</h4>
                     <p className="text-gray-600">
-                      123 Pest Control Avenue
+                      123 Pest Control Drive
                       <br />
-                      New York, NY 10001
+                      Auckland CBD, Auckland 1010
+                      <br />
+                      New Zealand
                     </p>
                   </div>
                 </div>
@@ -129,7 +131,7 @@ const Contact = () => {
                     <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
                     <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
                     <p className="text-gray-600">Sunday: Closed</p>
-                    <p className="text-gray-500 text-sm mt-1">Emergency services available 24/7</p>
+                    <p className="text-gray-500 text-sm mt-1">Emergency services available 24/7 across all Auckland areas</p>
                   </div>
                 </div>
               </div>
@@ -184,7 +186,7 @@ const Contact = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="(555) 123-4567"
+                        placeholder="(09) 123-4567"
                         className="w-full"
                       />
                     </div>
@@ -214,7 +216,7 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your pest control needs"
+                      placeholder="Tell us about your pest control needs in Auckland"
                       rows={5}
                       required
                       className="w-full"
@@ -246,14 +248,14 @@ const Contact = () => {
           <div className="max-w-6xl mx-auto">
             <div className="rounded-lg overflow-hidden h-[400px] shadow-md">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830894598!2d-74.11976399575546!3d40.69766374865767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sca!4v1659739884135!5m2!1sen!2sca"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102169.72673607565!2d174.65653386919066!3d-36.85093803384296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d0d47fb5a9ce6fb%3A0x500ef6143a29917!2sAuckland%2C%20New%20Zealand!5e0!3m2!1sen!2sus!4v1678152854347!5m2!1sen!2sus"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
                 allowFullScreen 
                 loading="lazy" 
                 referrerPolicy="no-referrer-when-downgrade"
-                title="PestPro Location"
+                title="PestPro Auckland Location"
               ></iframe>
             </div>
           </div>

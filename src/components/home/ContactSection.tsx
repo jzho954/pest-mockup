@@ -55,7 +55,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-6">
         <SectionHeading
           title="Get in Touch or Request a Quote"
-          subtitle="Contact us for a free consultation or to schedule a pest control service."
+          subtitle="Contact us for a free consultation or to schedule a pest control service anywhere in Auckland."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -71,8 +71,8 @@ const ContactSection = () => {
               <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
               <p className="text-gray-600 mb-6">
                 Feel free to reach out to us with any questions or to schedule a
-                pest inspection. Our team is ready to help you with all your pest
-                control needs.
+                pest inspection. Our Auckland team is ready to help you with all your pest
+                control needs across North Shore, West Auckland, South Auckland, and Central Auckland.
               </p>
             </div>
 
@@ -83,7 +83,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Phone</h4>
-                  <p className="text-gray-600">(555) 123-4567</p>
+                  <p className="text-gray-600">(09) 123-4567</p>
                 </div>
               </div>
 
@@ -93,7 +93,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-medium">Email</h4>
-                  <p className="text-gray-600">info@pestpro.com</p>
+                  <p className="text-gray-600">info@pestproauckland.co.nz</p>
                 </div>
               </div>
 
@@ -104,9 +104,11 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-medium">Office Address</h4>
                   <p className="text-gray-600">
-                    123 Pest Control Avenue
+                    123 Pest Control Drive
                     <br />
-                    New York, NY 10001
+                    Auckland CBD, Auckland 1010
+                    <br />
+                    New Zealand
                   </p>
                 </div>
               </div>
@@ -162,7 +164,7 @@ const ContactSection = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="(555) 123-4567"
+                    placeholder="(09) 123-4567"
                     className="w-full"
                   />
                 </div>
@@ -176,7 +178,7 @@ const ContactSection = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your pest control needs"
+                    placeholder="Tell us about your pest control needs in Auckland"
                     rows={4}
                     required
                     className="w-full"

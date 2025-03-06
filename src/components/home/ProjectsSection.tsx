@@ -11,29 +11,29 @@ import ImageWithFallback from "@/components/shared/ImageWithFallback";
 const projectsData = [
   {
     id: "apartment-complex",
-    title: "Apartment Complex Fumigation",
-    description: "Complete pest elimination for a 200-unit apartment complex in downtown area.",
+    title: "Auckland CBD Apartment Complex",
+    description: "Complete pest elimination for a 200-unit apartment complex in Auckland's central business district.",
     image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511",
     category: "Commercial",
   },
   {
     id: "restaurant-pest-control",
-    title: "Restaurant Pest Control",
-    description: "Implementing preventative pest control measures for a high-end restaurant chain.",
+    title: "Ponsonby Restaurant Chain",
+    description: "Implementing preventative pest control measures for a high-end restaurant chain in Ponsonby, Auckland.",
     image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
     category: "Commercial",
   },
   {
     id: "residential-termite-treatment",
-    title: "Residential Termite Treatment",
-    description: "Comprehensive termite treatment and prevention for a family home.",
+    title: "North Shore Termite Treatment",
+    description: "Comprehensive termite treatment and prevention for family homes across Auckland's North Shore.",
     image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
     category: "Residential",
   },
   {
     id: "wildlife-removal",
-    title: "Wildlife Removal & Prevention",
-    description: "Humane removal of wildlife and installation of preventative measures.",
+    title: "West Auckland Wildlife Removal",
+    description: "Humane removal of possums and other wildlife in West Auckland suburbs and installation of preventative measures.",
     image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
     category: "Wildlife",
   },
@@ -46,8 +46,8 @@ const ProjectsSection = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <SectionHeading
-          title="Our Recent Projects"
-          subtitle="Take a look at some of our successful pest control and removal projects."
+          title="Our Recent Auckland Projects"
+          subtitle="Take a look at some of our successful pest control and removal projects across Auckland."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

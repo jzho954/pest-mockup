@@ -11,15 +11,15 @@ import ImageWithFallback from "@/components/shared/ImageWithFallback";
 const projectsData = [
   {
     id: "apartment-complex",
-    title: "Apartment Complex Fumigation",
-    description: "Complete pest elimination for a 200-unit apartment complex in downtown area.",
-    fullDescription: "This large-scale fumigation project required careful planning and coordination with property management. We conducted a thorough inspection, identified multiple infestation points, and developed a comprehensive treatment plan that minimized disruption to residents while ensuring complete pest elimination.",
+    title: "Auckland CBD Apartment Complex",
+    description: "Complete pest elimination for a 200-unit apartment complex in Auckland's central business district.",
+    fullDescription: "This large-scale fumigation project required careful planning and coordination with property management in central Auckland. We conducted a thorough inspection, identified multiple infestation points, and developed a comprehensive treatment plan that minimized disruption to residents while ensuring complete pest elimination.",
     image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511",
     beforeImage: "https://images.unsplash.com/photo-1534430480872-3498386e7856",
     afterImage: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae",
-    location: "Downtown Business District",
+    location: "Auckland CBD",
     date: "January 15, 2025",
-    client: "Urban Properties Management",
+    client: "Auckland Properties Management",
     category: "Commercial",
     features: [
       "Initial comprehensive inspection",
@@ -31,15 +31,15 @@ const projectsData = [
   },
   {
     id: "restaurant-pest-control",
-    title: "Restaurant Pest Control",
-    description: "Implementing preventative pest control measures for a high-end restaurant chain.",
-    fullDescription: "This upscale restaurant was experiencing pest issues that threatened their reputation for excellence. Our team implemented a discreet, comprehensive pest control program focusing on kitchen areas, storage rooms, and dining spaces. We used food-safe products and methods that eliminated pests while ensuring zero impact on food preparation.",
+    title: "Ponsonby Restaurant Chain",
+    description: "Implementing preventative pest control measures for a high-end restaurant chain in Ponsonby, Auckland.",
+    fullDescription: "This upscale restaurant chain in trendy Ponsonby was experiencing pest issues that threatened their reputation for excellence. Our Auckland team implemented a discreet, comprehensive pest control program focusing on kitchen areas, storage rooms, and dining spaces. We used food-safe products and methods that eliminated pests while ensuring zero impact on food preparation.",
     image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d",
     beforeImage: "https://images.unsplash.com/photo-1504674900247-0877df9cc836",
     afterImage: "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa",
-    location: "Midtown Culinary District",
+    location: "Ponsonby, Auckland",
     date: "February 8, 2025",
-    client: "Gourmet Dining Group",
+    client: "Auckland Gourmet Dining Group",
     category: "Commercial",
     features: [
       "Food-safe pest control solutions",
@@ -51,15 +51,15 @@ const projectsData = [
   },
   {
     id: "residential-termite-treatment",
-    title: "Residential Termite Treatment",
-    description: "Comprehensive termite treatment and prevention for a family home.",
-    fullDescription: "This family home had an extensive termite infestation that was threatening the structural integrity of the building. Our team conducted a thorough inspection, identified all affected areas, and implemented a comprehensive treatment plan that eliminated the existing termite colonies and prevented future infestations.",
+    title: "North Shore Termite Treatment",
+    description: "Comprehensive termite treatment and prevention for family homes across Auckland's North Shore.",
+    fullDescription: "Several family homes in Auckland's North Shore had extensive termite infestations that were threatening the structural integrity of the buildings. Our team conducted thorough inspections, identified all affected areas, and implemented a comprehensive treatment plan that eliminated the existing termite colonies and prevented future infestations.",
     image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e",
     beforeImage: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf",
     afterImage: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4",
-    location: "Suburban Residential Area",
+    location: "North Shore, Auckland",
     date: "March 22, 2025",
-    client: "Johnson Family",
+    client: "Multiple North Shore Families",
     category: "Residential",
     features: [
       "Comprehensive termite inspection",
@@ -71,15 +71,15 @@ const projectsData = [
   },
   {
     id: "wildlife-removal",
-    title: "Wildlife Removal & Prevention",
-    description: "Humane removal of wildlife and installation of preventative measures.",
-    fullDescription: "A local business was experiencing problems with raccoons and other wildlife entering their property and causing damage. Our wildlife specialists humanely trapped and relocated the animals, then implemented a series of preventative measures to ensure they couldn't return, including sealing entry points and installing deterrents.",
+    title: "West Auckland Wildlife Removal",
+    description: "Humane removal of possums and other wildlife in West Auckland suburbs and installation of preventative measures.",
+    fullDescription: "Several businesses in West Auckland were experiencing problems with possums and other wildlife entering their properties and causing damage. Our wildlife specialists humanely trapped and relocated the animals, then implemented a series of preventative measures to ensure they couldn't return, including sealing entry points and installing deterrents.",
     image: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
     beforeImage: "https://images.unsplash.com/photo-1588123415838-29c82e31c0ef",
     afterImage: "https://images.unsplash.com/photo-1531125227120-9808a808446d",
-    location: "Commercial District",
+    location: "West Auckland",
     date: "April 5, 2025",
-    client: "Metro Business Center",
+    client: "West Auckland Business Center",
     category: "Wildlife",
     features: [
       "Humane trapping and relocation",
@@ -104,7 +104,7 @@ const ProjectDetail = () => {
     return (
       <div className="container mx-auto px-6 py-16 text-center">
         <h2 className="text-2xl font-semibold mb-4">Project Not Found</h2>
-        <p className="mb-8">The project you're looking for doesn't exist or has been removed.</p>
+        <p className="mb-8">The Auckland project you're looking for doesn't exist or has been removed.</p>
         <Button asChild>
           <Link to="/projects">Back to Projects</Link>
         </Button>
@@ -130,7 +130,7 @@ const ProjectDetail = () => {
           <Button asChild variant="outline" className="mb-8 group">
             <Link to="/projects" className="flex items-center">
               <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-              Back to Projects
+              Back to Auckland Projects
             </Link>
           </Button>
 
@@ -217,7 +217,7 @@ const ProjectDetail = () => {
 
                   <div className="mt-8">
                     <Button asChild className="w-full">
-                      <Link to="/contact">Contact Us</Link>
+                      <Link to="/contact">Contact Our Auckland Team</Link>
                     </Button>
                   </div>
                 </CardContent>
